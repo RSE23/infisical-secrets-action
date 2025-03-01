@@ -58,7 +58,7 @@ try {
     shouldRecurse,
   });
 
-  core.debug(
+  core.info(
     `Exporting the following envs", ${JSON.stringify(
       Object.keys(keyValueSecrets)
     )}`
