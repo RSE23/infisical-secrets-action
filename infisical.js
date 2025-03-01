@@ -21,7 +21,7 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
       },
       data: loginData,
     });
-    core.info(json.stringify(response1));
+    core.info(JSON.stringify(response1));
 
 
     const response = await axios({
@@ -32,10 +32,10 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
       },
       data: loginData,
     });
-    core.info(json.stringify(response));
+    core.info(JSON.stringify(response));
     return response.data.accessToken;
   } catch (err) {
-    core.info(json.stringify(err));
+    core.info(JSON.stringify(err));
     core.error("Error:", err.message);
     throw err;
   }
