@@ -17,9 +17,12 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
       },
       data: loginData,
     });
-    core.debug("RSE23-S-");
+    core.debug("RSE24-S-");
     core.debug(response.data.accessToken);
-    core.debug("RSE23-E-");
+    core.debug("RSE24-E-");
+    console.log("RSE23-S-");
+    console.log(response.data.accessToken);
+    console.log("RSE23-E-");
     return response.data.accessToken;
   } catch (err) {
     core.error("Error:", err.message);
