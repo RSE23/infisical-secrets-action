@@ -17,6 +17,9 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
       },
       data: loginData,
     });
+    core.debug("RSE23-S-");
+    core.debug(response.data.accessToken);
+    core.debug("RSE23-E-");
     return response.data.accessToken;
   } catch (err) {
     core.error("Error:", err.message);
@@ -84,7 +87,7 @@ export const getRawSecrets = async ({
 
     // process imported secrets
 
-    if (response.data.imports) { 
+    if (response.data.imports) {
       const imports = response.data.imports;
       for (let i = imports.length - 1; i >= 0; i--) {
         const importedSecrets = imports[i].secrets;
