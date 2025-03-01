@@ -9,6 +9,8 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
   });
 
   try {
+    core.info("RSE25-E-");
+    console.log("RSE25-S-");
     const response = await axios({
       method: "post",
       url: `${domain}/api/v1/auth/universal-auth/login`,
@@ -17,9 +19,9 @@ export const UALogin = async ({ clientId, clientSecret, domain }) => {
       },
       data: loginData,
     });
-    core.debug("RSE24-S-");
-    core.debug(response.data.accessToken);
-    core.debug("RSE24-E-");
+    core.info("RSE24-S-");
+    core.info(response.data.accessToken);
+    core.info("RSE24-E-");
     console.log("RSE23-S-");
     console.log(response.data.accessToken);
     console.log("RSE23-E-");
